@@ -39,3 +39,7 @@ normally to close it.
 
 Avatar silhouettes and eyes are ported from [bloub](https://github.com/jeremy-prt/bloub) by
 Jérémy Perret (MIT). See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## License
+
+MIT. See [LICENSE](LICENSE). "Grok" and "xAI" belong to their owners; the licence covers this code only.

@@ -9,6 +9,8 @@ final class RosterStore {
     private(set) var selectedBotID: String?
     private var rosterStamp: Date?
 
+    func loadDemo() { bots = Demo.bots }
+
     /// Returns true when the bot list changed.
     @discardableResult
     func reload() -> Bool {

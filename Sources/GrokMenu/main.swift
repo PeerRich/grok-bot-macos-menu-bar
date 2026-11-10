@@ -16,6 +16,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         statusItem.menu = menu
         statusItem.button?.imagePosition = .imageLeading
 
+        if Demo.isEnabled {
+            roster.loadDemo()
+            live.loadDemo()
+            refresh()
+            if let path = Demo.screenshotPath { Demo.captureMenu(of: statusItem, to: path) }
+            return
+        }
+
         roster.reload()
         live.onChange = { [weak self] in self?.refresh() }
         live.start()
@@ -110,14 +118,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         menu.addItem(.separator())
 
         let rest = roster.bots.filter { !activeIDs.contains($0.id) }
-        for bot in rest where !bot.isHidden { menu.addItem(botItem(bot, subtitle: bot.preview.truncated(64))) }
+        for bot in rest where !bot.isHidden { menu.addItem(botItem(bot, subtitle: bot.preview.truncated(50))) }
 
         let hidden = rest.filter(\.isHidden)
         if !hidden.isEmpty {
             let parent = NSMenuItem(title: "Hidden Bots (\(hidden.count))", action: nil, keyEquivalent: "")
             let submenu = NSMenu()
             submenu.autoenablesItems = false
-            for bot in hidden { submenu.addItem(botItem(bot, subtitle: bot.preview.truncated(64))) }
+            for bot in hidden { submenu.addItem(botItem(bot, subtitle: bot.preview.truncated(50))) }
             parent.submenu = submenu
             menu.addItem(parent)
         }

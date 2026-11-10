@@ -22,6 +22,11 @@ final class LiveStatusClient {
     private var nextID = 1
     private var pollTask: Task<Void, Never>?
 
+    func loadDemo() {
+        connection = .connected
+        snapshot = Snapshot(states: Demo.states)
+    }
+
     func start() {
         pollTask = Task { [weak self] in
             while !Task.isCancelled {

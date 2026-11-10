@@ -5,6 +5,10 @@ A small macOS menu bar app that shows what your [Grok Bot](https://x.ai) bots ar
 - **Menu bar:** the avatar and current task of the active bot ("Handling it", "Searching the web", …), plus `+N` when more bots are active.
 - **Menu:** active bots on top, then a divider, then the rest of your bots with avatar and last message. Hidden bots sit in a submenu. Clicking a bot opens it in Grok Bot.
 
+![Menu with three active bots on top and the other bots below](docs/screenshot.png)
+
+*Example with made-up bots (`GrokMenu --demo`). The menu is a real capture; the menu bar strip and backdrop are drawn around it.*
+
 Unofficial. Not affiliated with xAI. It depends on Grok Bot internals (tested with 0.79.3) and can break when Grok Bot updates.
 
 ## Build and run
@@ -16,6 +20,9 @@ Needs macOS 14.4+ and the Swift toolchain (Xcode or Command Line Tools).
 ```
 
 This builds `build/Grok Menu.app` and starts it.
+
+To try it without Grok Bot, run `.build/release/GrokMenu --demo`. Add `--screenshot out.png` to
+regenerate the picture above (needs Screen Recording permission for your terminal).
 
 ## How it works
 
